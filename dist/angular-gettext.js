@@ -192,10 +192,11 @@ angular.module('gettext').directive('translate', ["gettextCatalog", "$parse", "$
                         // Swap in the translation
                         var newWrapper = angular.element('<span>' + translated + '</span>');
                         $compile(newWrapper.contents())(scope);
-                        var oldContents = element.contents();
+                        //var oldContents = element.contents();
                         var newContents = newWrapper.contents();
-                        $animate.enter(newContents, element);
-                        $animate.leave(oldContents);
+                        element.empty().text(newContents);
+                        // $animate.enter(newContents, element);
+                        // $animate.leave(oldContents);
                     }
 
                     if (attrs.translateN) {
